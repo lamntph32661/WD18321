@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SinhVienController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -27,6 +28,23 @@ Route::get('/get-user/{id}/{name?}', [UserController::class,'getUser']);
 Route::get('/update-user', [UserController::class,'updateUser']);
 Route::get('/thong-tin-sinh-vien',[SinhVienController::class,'thongTin']);
 
+Route::group(['prefix'=>'users','as'=>'users.'],function () {
+    Route::get('list-users',[UserController::class,'listUser'])->name('listUsers');
+    Route::get('add-users',[UserController::class,'addUsers'])->name('addUsers');
+    Route::post('add-users',[UserController::class,'addPostUsers'])->name('addPostUsers');
+    Route::get('delete-users/{idUser}',[UserController::class,'deleteUsers'])->name('deleteUsers');
+    Route::get('update-users/{idUser}',[UserController::class,'updateUsers'])->name('updateUsers');
+    Route::post('update-users/{idUser}',[UserController::class,'updatePostUsers'])->name('updatePostUsers');
+});
+Route::group(['prefix'=>'product', 'as'=>'product.'],function ()  {
+    Route::get('list',[ProductController::class,'list'])->name('list');
+    Route::get('add',[ProductController::class,'add'])->name('add');
+    Route::post('add',[ProductController::class,'postProduct'])->name('add');
+    Route::get('deletePro/{idPro}',[ProductController::class,'deletePro'])->name('deletePro');
+    Route::get('updatePro/{idPro}',[ProductController::class,'updatePro'])->name('updatePro');
+    Route::post('updatePro/{idPro}',[ProductController::class,'updatePostPro'])->name('updatePro');
+    Route::post('timkiem',[ProductController::class,'timkiem'])->name('timkiem');
+});
 // /*
 // |--------------------------------------------------------------------------
 // | Web Routes
