@@ -17,4 +17,7 @@ class SinhVienController extends Controller
         ];
         return view('list-sinh-vien')->with(['sinhVien'=>$sinhVien]);
     }
+    function test() {
+        return view('admin/products/list-product');
+    }
 }
