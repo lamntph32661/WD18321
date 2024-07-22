@@ -25,7 +25,6 @@ class ProductController extends Controller
             'price'=>$req->price,
             'view'=>$req->view,
             'create_at'=>Carbon::now(),
-            
         ];
         DB::table('product')->insert($data);
         return redirect()->route('product.list');

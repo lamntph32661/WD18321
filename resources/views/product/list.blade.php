@@ -24,11 +24,11 @@
         <tbody>
             @foreach ($product as $item)
                 <tr>
-                <td>{{$item->id}}</td>
+                <td>{{$item->product_id}}</td>
                 <td>{{$item->name}}</td>
                 <td>{{$item->price}}</td>
-                <td>{{$item->cate_name}}</td>
-                <td>{{$item->view}}</td>
+                <td>{{$item->description}}</td>
+                <td>{{$item->image}}</td>
                 <td>{{$item->create_at}}</td>
                 <td>{{$item->update_at}}</td>
                 <td><a href="{{route('product.deletePro',$item->id)}}" onclick="return confirm('Bạn có muốn xóa?')">xóa</a> <a href="{{route('product.updatePro',$item->id)}}" >sửa</a></td>

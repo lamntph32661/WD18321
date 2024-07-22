@@ -1,68 +1,46 @@
 @extends('admin.layout.default')
+@push('styles')
+    
+@endpush
 @section('content')
     <div class="p-4" style="min-height: 800px;">
     <h4 class="text-primary mb-4">Danh sách sản phẩm</h4>
-    <button class="btn btn-info">Thêm mới</button>
+    <a href="{{route('admin.product.addPro')}}"><button class="btn btn-info">Thêm mới</button></a>
+    @if (session('message'))
+        <div class="alert alert-primary">
+            {{session('message')}}
+        </div>
+        
+    @endif
     <table class="table mt-3">
-        <thead>
-            <tr>
-                <th scope="col">STT</th>
-                <th scope="col">Tên sản phẩm</th>
-                <th scope="col">Giá sản phẩm</th>
-                <th scope="col">Mô tả</th>
-                <th scope="col">Hành động</th>
-            </tr>
-        </thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>price</th>
+            <th>description</th>
+            <th>image</th>
+            <th>create_at</th>
+            <th>update_at</th>
+            <th>function</th>
+        </tr>
         <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Nokia 520</td>
-                <td>15000000 vnđ</td>
-                <td>
-                    Điện thoại mới giá ổn
-                </td>
-                <td>
-                    <button class="btn btn-warning">Sửa</button>
-                    <button class="btn btn-danger">Xóa</button>
-                </td>
+            @foreach ($products as $item)
+                <tr>
+                <td>{{$item->product_id}}</td>
+                <td>{{$item->name}}</td>
+                <td>{{$item->price}}</td>
+                <td>{{$item->description}}</td>
+                <td><img src="{{asset($item->image)}}" alt="" height="80px"></td>
+                <td>{{$item->created_at}}</td>
+                <td>{{$item->updated_at}}</td>
+                {{-- <td><a href="{{route('product.deletePro',$item->id)}}" onclick="return confirm('Bạn có muốn xóa?')">xóa</a> <a href="{{route('product.updatePro',$item->id)}}" >sửa</a></td> --}}
             </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>Nokia 520</td>
-                <td>15000000 vnđ</td>
-                <td>
-                    Điện thoại mới giá ổn
-                </td>
-                <td>
-                    <button class="btn btn-warning">Sửa</button>
-                    <button class="btn btn-danger">Xóa</button>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>Nokia 520</td>
-                <td>15000000 vnđ</td>
-                <td>
-                    Điện thoại mới giá ổn
-                </td>
-                <td>
-                    <button class="btn btn-warning">Sửa</button>
-                    <button class="btn btn-danger">Xóa</button>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">1</th>
-                <td>Nokia 520</td>
-                <td>15000000 vnđ</td>
-                <td>
-                    Điện thoại mới giá ổn
-                </td>
-                <td>
-                    <button class="btn btn-warning">Sửa</button>
-                    <button class="btn btn-danger">Xóa</button>
-                </td>
-            </tr>
+            @endforeach
+            
         </tbody>
     </table>
     </div>
 @endsection
+@push('scripts')
+    
+@endpush
