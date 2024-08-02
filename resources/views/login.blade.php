@@ -15,23 +15,21 @@
 </head>
 
 <body>
-    <div class="container-fluid">
-        <div class="row">
-            {{-- sidebar --}}
-            @include('admin.layout.sidebar')
-
-            <div class="col-9 offset-3 p-0 position-relative">
-                {{-- header --}}
-                @include('admin.layout.header')
-
-                {{-- main --}}
-                @yield('content')
-
-                {{-- footer --}}
-                @include('admin.layout.footer')
-                
-            </div>
+    {{session('message')}}
+    <div class="container">
+<form action="{{route('postLogin')}}" method="post">
+    
+    <div class="mb-3">
+        email:
+        <input type="email" name="email" id="" class="form-controll"><br>
+        password:
+        <input type="password" name="password" id="" class="form-controll"><br>
+        <div class="mb-3">
+            <input type="checkbox" name="remember" id="remember"><label for="remember">remember me</label>
         </div>
+        <button class="btn">Đăng nhập</button>
+    </div>@csrf
+</form>
     </div>
 
 

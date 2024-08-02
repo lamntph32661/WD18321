@@ -38,7 +38,8 @@
             @endforeach
             
         </tbody>
-    </table>
+       
+    </table> {{$products->links('pagination::bootstrap-5')}}
     </div>
 @endsection
 @push('scripts')

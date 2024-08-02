@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\File;
 class ProductController extends Controller
 {
     function list()  {
-        $products=Products::all();
+        $products=Products::orderBy('product_id','desc')->paginate(5);
         return view('admin/products/list-product',compact('products'));
     }
     public function addPro()  {
